@@ -30,14 +30,34 @@ Home
 
 ## Скриншоты
 
-<p align="left">
-  <img src="app/img/step7_navigation_working_1.png" width="180" height="350" 
-  alt="Home"><br>
-  <img src="app/img/step7_navigation_working_2.png" width="180" height="350" alt="Details"><br>
-  <img src="app/img/step7_navigation_working_3.png" width="180" height="350" alt="Profile"><br>
-  <img src="app/img/step7_navigation_working_4.png" width="180" height="350" alt="Settings"><br>
-  <img src="app/img/step7_navigation_working_5.png" width="180" height="350" alt="Calendar"><br>
-</p>
+<div align="center">
+  <table style="border-collapse: collapse; border: none;">
+    <tr style="border: none;">
+      <td align="center" style="border: none; padding: 10px;">
+        <p style="font-weight: bold; margin-bottom: 5px; color: #555;">🏠 Home Screen</p>
+        <img src="app/img/step7_navigation_working_1.png" width="180" height="350" style="border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
+      </td>
+      <td align="center" style="border: none; padding: 10px;">
+        <p style="font-weight: bold; margin-bottom: 5px; color: #555;">📄 Detail Screen</p>
+        <img src="app/img/step7_navigation_working_2.png" width="180" height="350" style="border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
+      </td>
+      <td align="center" style="border: none; padding: 10px;">
+        <p style="font-weight: bold; margin-bottom: 5px; color: #555;">👤 Profile Screen</p>
+        <img src="app/img/step7_navigation_working_3.png" width="180" height="350" style="border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
+      </td>
+    </tr>
+    <tr style="border: none;">
+      <td align="center" style="border: none; padding: 10px;">
+        <p style="font-weight: bold; margin-bottom: 5px; color: #555;">⚙️ Settings Screen</p>
+        <img src="app/img/step7_navigation_working_4.png" width="180" height="350" style="border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
+      </td>
+      <td align="center" style="border: none; padding: 10px;">
+        <p style="font-weight: bold; margin-bottom: 5px; color: #555;">📅 Calendar Screen</p>
+        <img src="app/img/step7_navigation_working_5.png" width="180" height="350" style="border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
+      </td>
+    </tr>
+  </table>
+</div>
 
 ---
 
