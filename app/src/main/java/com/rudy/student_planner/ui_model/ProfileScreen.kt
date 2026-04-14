@@ -62,12 +62,12 @@ fun ProfileScreen(
                     )
                     Spacer(modifier = Modifier.height(16.dp))
                     Text(
-                        text = "Иванов Иван Иванович",
+                        text = "Rudy Rudy Ruyd",
                         style = MaterialTheme.typography.headlineSmall,
                         fontWeight = FontWeight.Bold
                     )
                     Text(
-                        text = "Группа: ИСП-234",
+                        text = "Группа: ИСП-233",
                         style = MaterialTheme.typography.titleMedium,
                         color = MaterialTheme.colorScheme.onPrimaryContainer
                     )
@@ -88,7 +88,7 @@ fun ProfileScreen(
                     ProfileInfoRow(
                         icon = Icons.Default.Email,
                         label = "Email",
-                        value = "ivanov@vgi.volsu.ru"
+                        value = "rudy@vgi.volsu.ru"
                     )
                     HorizontalDivider()
                     ProfileInfoRow(
