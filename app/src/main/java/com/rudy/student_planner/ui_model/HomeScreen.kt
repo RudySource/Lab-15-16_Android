@@ -88,7 +88,6 @@ fun HomeScreen(
     onSubjectClick: (String) -> Unit,
     onProfileClick: () -> Unit,
     onSettingsClick: () -> Unit,
-    onScheduleClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     Scaffold(
