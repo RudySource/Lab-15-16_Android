@@ -1,33 +1,43 @@
 # Лабораторная работа №15-16. Navigation in Jetpack Compose
 
 ## Описание
-Позволяет просматривать список дисциплин, получать подробную информацию о курсах и управлять профилем и настройками. Приложение демонстрирует работу навигации и передачу данных меж
+
+Позволяет просматривать список дисциплин, получать подробную информацию о курсах, времени, управлять профилем и настройками. Приложение демонстрирует работу навигации и передачу данных между окон.
 
 ## Реализованные экраны
+
 - Home (Список дисциплин)
 - Details (Детали дисциплины)
 - Profile (Профиль студента)
 - Settings (Настройки)
+- Calendar (Расписание пар)
 
 ## Используемые технологии
+
 - Kotlin
 - Jetpack Compose
 - Navigation Compose
 
 ## Схема навигации
+
 ```
 Home
  - Details (с параметром subjectId)
  - Profile
  - Settings
+ - Calendar
 ```
 
 ## Скриншоты
 
-![Home](app/img/step7_navigation_working_1.png)
-![Details](app/img/step7_navigation_working_2.png)
-![Profile](app/img/step7_navigation_working_3.png)
-![Settings](app/img/step7_navigation_working_4.png)
+<p align="left">
+  <img src="app/img/step7_navigation_working_1.png" width="180" height="350" 
+  alt="Home"><br>
+  <img src="app/img/step7_navigation_working_2.png" width="180" height="350" alt="Details"><br>
+  <img src="app/img/step7_navigation_working_3.png" width="180" height="350" alt="Profile"><br>
+  <img src="app/img/step7_navigation_working_4.png" width="180" height="350" alt="Settings"><br>
+  <img src="app/img/step7_navigation_working_5.png" width="180" height="350" alt="Calendar"><br>
+</p>
 
 ---
 
@@ -39,11 +49,13 @@ Home
 > NavController - это основной компонент, который управляет навигацией в приложении.
 
 Он отвечает за:
+
 - переходы между экранами (navigate)
 - хранение back stack
 - обработку кнопки "Назад"
 
 Почему используется `rememberNavController()`:
+
 - сохраняет состояние при рекомпозиции
 - предотвращает пересоздание контроллера
 - обеспечивает корректную работу навигации
@@ -53,23 +65,28 @@ Home
 ## 2. Как передать параметр в маршрут навигации?
 
 Процесс:
+
 1. Определение маршрута:
+
 ```kotlin
 "details/{subjectId}"
 ```
 
 2. Переход:
+
 ```kotlin
 navController.navigate("details/123")
 ```
 
 3. Получение:
+
 ```kotlin
 val id = backStackEntry.arguments?.getString("subjectId")
 ```
 
 > [!NOTE]
-> - Обязательные параметры - должны быть переданы обязательно  
+>
+> - Обязательные параметры - должны быть переданы обязательно
 > - Опциональные параметры - имеют значение по умолчанию и могут отсутствовать
 
 ---
@@ -77,6 +94,7 @@ val id = backStackEntry.arguments?.getString("subjectId")
 ## 3. Зачем использовать sealed class для маршрутов?
 
 Преимущества:
+
 - типобезопасность
 - отсутствие ошибок в строках
 - удобство поддержки
@@ -84,9 +102,11 @@ val id = backStackEntry.arguments?.getString("subjectId")
 
 > [!WARNING]
 > Без sealed class легко допустить ошибку:
+>
 > ```kotlin
 > navController.navigate("detials/123")
 > ```
+>
 > Такой маршрут не будет найден
 
 ---
@@ -96,7 +116,9 @@ val id = backStackEntry.arguments?.getString("subjectId")
 Back Stack - это стек экранов (LIFO).
 
 Схема:
+
 ```
+Calendar
 Settings
 Profile
 Home
@@ -105,6 +127,7 @@ Home
 Текущий экран - Settings
 
 Что делает popBackStack():
+
 - удаляет текущий экран
 - возвращает к предыдущему (Profile)
 
@@ -116,6 +139,7 @@ Home
 > startDestination - это экран, который открывается первым
 
 Пример:
+
 ```kotlin
 startDestination = "home"
 ```
@@ -123,6 +147,7 @@ startDestination = "home"
 Первым будет экран Home
 
 Можно ли изменить динамически:
+
 - да, через условную логику или пересоздание NavHost
 
 ---
@@ -133,6 +158,7 @@ startDestination = "home"
 > Приложение может завершиться с ошибкой (crash)
 
 Как избежать:
+
 - использовать sealed class
 - проверять маршруты
 - добавлять обработку ошибок
@@ -145,11 +171,13 @@ startDestination = "home"
 > launchSingleTop предотвращает создание дубликатов экранов
 
 Проблема без него:
+
 ```
 Home -> Profile -> Profile -> Profile
 ```
 
 Решение:
+
 ```kotlin
 navController.navigate("profile") {
     launchSingleTop = true
@@ -157,5 +185,6 @@ navController.navigate("profile") {
 ```
 
 Результат:
+
 - один экземпляр экрана в back stack
 - стек не переполняется

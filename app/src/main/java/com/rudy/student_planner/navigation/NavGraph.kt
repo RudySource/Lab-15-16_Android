@@ -7,7 +7,9 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
+import com.rudy.student_planner.data.sampleSubjects
 import com.rudy.student_planner.ui_model.*
+import com.rudy.student_planner.data.calendar_lessons
 
 @Composable
 fun StudentPlannerNavHost(
@@ -29,6 +31,9 @@ fun StudentPlannerNavHost(
                 },
                 onSettingsClick = {
                     navController.navigate(Screen.Settings.route)
+                },
+                onCalendarClick = {
+                    navController.navigate(Screen.Calendar.route)
                 }
             )
         }
@@ -48,7 +53,6 @@ fun StudentPlannerNavHost(
                     navController.popBackStack()
                 }
             )
-
         }
 
         composable(route = Screen.Profile.route) {
@@ -63,6 +67,21 @@ fun StudentPlannerNavHost(
             SettingsScreen(
                 onNavigateBack = {
                     navController.popBackStack()
+                }
+            )
+        }
+
+        composable(route = Screen.Calendar.route) {
+            CalendarScreen(
+                onNavigateBack = { navController.popBackStack() },
+                onLessonClick = { lessonId ->
+                    val lesson = calendar_lessons.find { it.id == lessonId }
+                    if (lesson != null) {
+                        val subject = sampleSubjects.find { it.name == lesson.subjectName }
+                        if (subject != null) {
+                            navController.navigate(Screen.Details.createRoute(subject.id))
+                        }
+                    }
                 }
             )
         }
